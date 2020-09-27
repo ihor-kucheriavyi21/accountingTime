@@ -1,0 +1,17 @@
+
+â
+java:S1989 "lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±å©¿8„Ω⁄±À.
+~
+java:S19897"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ù˙Üœ8Û¨Î∞À.
+]	java:S125"<This block of commented-out lines of code should be removed.(°íÖ˘¸ˇˇˇˇ8ﬂì˙∞À.
+v
+java:S1989!"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(ôåÛú8–¸˘±À.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‘ƒìë8Û¨Î∞À.
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(‘ƒìë8Û¨Î∞À.
+v
+java:S19894"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(æ¨Á∂8¡≥µ∞À.
+v
+java:S1989#"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(”ÖœÔ8Ü∂ﬁ±À.
+u
+java:S1989-"SHandle the following exception that could be thrown by "sendRedirect": IOException.(Õ¢¨ô˙ˇˇˇˇ8û˚‰≥À.

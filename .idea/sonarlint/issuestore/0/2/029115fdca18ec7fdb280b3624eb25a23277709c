@@ -1,0 +1,7 @@
+
+q
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÆÚ²Ëüÿÿÿÿ8Ó½íÑË.
+\
+java:S1118":Add a private constructor to hide the implicit public one.(Ìáúÿÿÿÿ8¬ õÑË.
+d
+java:S2095"GUse try-with-resources or close this "ResultSet" in a "finally" clause.(·¦Ã…8¬ õÑË.
