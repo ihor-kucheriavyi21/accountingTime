@@ -10,11 +10,6 @@
 <%@include file="../template/navbar.jspf" %>
 <%@ include file="../template/header.jspf"%>
 
-<html>
-<head>
-    <title>UpdateTask</title>
-</head>
-<body>
 <li>Id: <c:out value="${requestScope.task.idTask}"/></li>
 <li>Name: <c:out value="${requestScope.task.taskName}"/></li>
 <li>Recording time: <c:out value="${requestScope.task.recordingTime}"/></li>
@@ -25,6 +20,4 @@
     <label><input type="text" name="time"></label>Amount of time<br>
     <input type="submit" value="Ok" name="Ok"><br>
 </form>
-</body>
-</html>
 <%@ include file="../template/footer.jspf"%>

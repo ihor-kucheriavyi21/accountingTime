@@ -1,6 +1,6 @@
-package servlet;
+package servlet.task;
 
-import db.SQLDatabaseManager;
+import db.TaskDaoImpl;
 import model.entity.Task;
 import model.entity.User;
 
@@ -13,18 +13,8 @@ import java.sql.Time;
 
 public class UpdateTaskServlet extends HttpServlet {
     private final static String index = "/WEB-INF/view/update.jsp";
+    TaskDaoImpl taskDao = new TaskDaoImpl();
 
-/*
-    @Override
-    public void init() throws ServletException {
-
-        final Object users = getServletContext().getAttribute("tasks");
-
-        if (users == null || !(users instanceof ConcurrentHashMap)) {
-
-            throw new IllegalStateException("You're repo does not initialize!");
-        }
-    }*/
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -33,16 +23,18 @@ public class UpdateTaskServlet extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
         String nameTask = req.getParameter("name");
         int amountOfTime = Integer.parseInt(req.getParameter("time"));
-        if (User.tasks.containsKey(id)) {
+
+        User user = (User) req.getSession().getAttribute("user");
+
+        if (user.tasks.containsKey(id)) {
             System.out.println("this key EXIST");
         }
-        Task task = User.tasks.get(id);
+        Task task = user.tasks.get(id);
         task.setTaskName(nameTask);
         task.setAmountOfTime(amountOfTime);
         task.setRecordingTime(new Time(System.currentTimeMillis()));
-        SQLDatabaseManager sqlDatabaseManager = SQLDatabaseManager.getInstance();
-        sqlDatabaseManager.updateTask(task);
-        resp.sendRedirect(req.getContextPath() + "/");
+        taskDao.update(task);
+        resp.sendRedirect(req.getContextPath() + "/main");
     }
 
     @Override
@@ -50,9 +42,10 @@ public class UpdateTaskServlet extends HttpServlet {
             throws ServletException, IOException {
         System.out.println("####DOGET FOR UPDATE TASK");
         int idTask = Integer.parseInt(req.getParameter("id"));
-        Task task = User.tasks.get(idTask);
+        User user = (User) req.getSession().getAttribute("user");
+
+        Task task = user.tasks.get(idTask);
         req.setAttribute("task", task);
         req.getRequestDispatcher(index).forward(req, resp);
-
     }
 }

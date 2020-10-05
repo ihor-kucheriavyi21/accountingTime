@@ -2,17 +2,18 @@
 <nav role="navigation" class="navbar navbar-default">
 
     <div class="">
-        <a href="/" class="navbar-brand">Accounting</a>
+        <a href="/main" class="navbar-brand">Accounting</a>
     </div>
-
     <div class="navbar-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
+            <li class="active"><a href="/main">Home</a></li>
             <li><a href="http://joyreactor.cc/">Funny Pictures</a></li>
+            <c:if test="${sessionScope.user.idRole==2}">
+                <li><a href="/allTask">All tasks</a></li>
+            </c:if>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a>Welcome <c:out value="${requestScope.userName}"/></a></li>
-
+            <li><a>Welcome <c:out value="${sessionScope.user.name}"/></a></li>
             <li><a href="/logout">Logout</a></li>
         </ul>
     </div>

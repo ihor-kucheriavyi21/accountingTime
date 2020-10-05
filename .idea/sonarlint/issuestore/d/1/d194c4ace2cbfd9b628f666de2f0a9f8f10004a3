@@ -1,0 +1,24 @@
+
+~
+java:S19891"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ú†Ï8ó¬ë°Ë.
+W
+java:S2209"5Change this instance-reference to a static reference.(°…Éöøÿÿÿÿ8—×‚üÎ.
+v
+java:S1989"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(Ó…Ïï8†¶Ş±Ë.
+v
+java:S1989,"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(¾¬ç¶8Á³µ°Ë.
+z
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(—§ë“ùÿÿÿÿ8Ÿ³å®Í.
+v
+java:S1989"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(™Œóœ8Ğüù±Ë.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÔÄ“‘8ó¬ë°Ë.
+‰
+java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À8ã½Ú±Ë.
+o
+java:S1989%"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ú£ñU8ûä³Ë.
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÔÄ“‘8ó¬ë°Ë.
+W
+java:S2209 "5Change this instance-reference to a static reference.(äıÓŒøÿÿÿÿ8±ë‚üÎ.
+R
+java:S2209/"5Change this instance-reference to a static reference.(—ìÃÜ8òƒüÎ.

@@ -7,7 +7,15 @@
     <title>Accounting Time</title>
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <style>
+   <%-- <link href="../template/style/sb-admin-2.css" rel="stylesheet" type="text/css">--%>
+<%--
+   <style><%@include file="/WEB-INF/template/style/sb-admin-2.css"%></style>
+--%>
+<%--
+    <style><%@include file="/WEB-INF/template/style/sb-admin-2.min.css"%></style>
+--%>
+
+<%--<style>
         .footer {
             position: absolute;
             bottom: 0;
@@ -21,7 +29,7 @@
             max-width: 680px;
             padding: 0 15px;
         }
-    </style>
+    </style>--%>
 </head>
 
 <body>

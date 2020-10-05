@@ -12,12 +12,12 @@
 
     <servlet-mapping>
         <servlet-name>hello</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/main</url-pattern>
     </servlet-mapping>
     <!--Addition task-->
     <servlet>
         <servlet-name>AddTask</servlet-name>
-        <servlet-class>servlet.AddTaskServlet</servlet-class>
+        <servlet-class>servlet.task.AddTaskServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddTask</servlet-name>
@@ -27,7 +27,7 @@
     <!--Delete task-->
     <servlet>
         <servlet-name>DeleteTask</servlet-name>
-        <servlet-class>servlet.DeleteTaskServlet</servlet-class>
+        <servlet-class>servlet.task.DeleteTaskServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DeleteTask</servlet-name>
@@ -37,7 +37,7 @@
     <!--Update task-->
     <servlet>
         <servlet-name>UpdateTask</servlet-name>
-        <servlet-class>servlet.UpdateTaskServlet</servlet-class>
+        <servlet-class>servlet.task.UpdateTaskServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UpdateTask</servlet-name>
@@ -54,7 +54,7 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-    <!--Login user-->
+    <!--Logout user-->
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>servlet.LogoutServlet</servlet-class>
@@ -62,6 +62,27 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <!--Registration user-->
+    <servlet>
+        <servlet-name>Registration</servlet-name>
+        <servlet-class>servlet.RegisterUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Registration</servlet-name>
+        <url-pattern>/registration</url-pattern>
+    </servlet-mapping>
+
+    <!--All tasks for Admin-->
+    <servlet>
+        <servlet-name>AllTasks</servlet-name>
+        <servlet-class>servlet.AllTasksForAdminServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AllTasks</servlet-name>
+        <url-pattern>/allTask</url-pattern>
     </servlet-mapping>
 
 

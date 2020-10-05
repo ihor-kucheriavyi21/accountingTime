@@ -1,14 +1,11 @@
 
-b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Ş‡¹Ã8Œ‰ëÒË.
-u
-java:S1989 "SHandle the following exception that could be thrown by "sendRedirect": IOException.(òÉÂ„øÿÿÿÿ8ÿÿÖË.
-W
-java:S1161":Add the "@Override" annotation above this method signature(ÅµÄè8¼›ÓË.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ş‡¹Ã8Œ‰ëÒË.
+o
+java:S1989!"SHandle the following exception that could be thrown by "sendRedirect": IOException.(Ìğ§m8ÿÿÖË.
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(™Ú¼ùÿÿÿÿ8Ñãˆ¨Î.
 ƒ
-java:S1989"aHandle the following exceptions that could be thrown by "include": ServletException, IOException.(ß‘†¸üÿÿÿÿ8ïıºÓË.
-u
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ÿ¿…û8ÚñÔË.
+java:S1989"aHandle the following exceptions that could be thrown by "include": ServletException, IOException.(ß‘†¸üÿÿÿÿ8ïıºÓË.
 ƒ
-java:S1989#"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(”Õ­Íÿÿÿÿÿ8´êçÓË.
+java:S1989$"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(•ú„Îùÿÿÿÿ8À½‡¨Î.
+\
+java:S2441 ":Make "User" serializable or don't store it in the session.(ƒÖ‹¬şÿÿÿÿ8§É»¤Î.

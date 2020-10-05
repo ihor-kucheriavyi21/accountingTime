@@ -1,6 +1,7 @@
 package servlet;
 
-import service.UserValidationService;
+import model.entity.User;
+import model.service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,14 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
-    private UserValidationService userValidationService = new UserValidationService();
+    private final UserService userService = new UserService();
 
-    private final static String login = "/WEB-INF/view/login.jsp";
+    private final static String LOGIN = "/WEB-INF/view/login.jsp";
 
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher(login);
+        RequestDispatcher rd = request.getRequestDispatcher(LOGIN);
         rd.include(request, response);
     }
 
@@ -25,14 +26,14 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name = req.getParameter("username");
         String password = req.getParameter("userpass");
-        boolean isUserValid = userValidationService.isUserValid(name, password);
-
+        boolean isUserValid = userService.checkIfExist(name, password);
         if (isUserValid) {
-            req.getSession().setAttribute("name", name);
-            resp.sendRedirect("/");
+            User user = userService.getUser(new User(name, password));
+            req.getSession().setAttribute("user", user);
+            resp.sendRedirect("/main");
         } else {
             req.setAttribute("errorMessage", "Invalid Credentials");
-            req.getRequestDispatcher(login).forward(req, resp);
+            req.getRequestDispatcher(LOGIN).forward(req, resp);
         }
     }
 }

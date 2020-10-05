@@ -13,6 +13,8 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("logoutMessage", "You are successfully logged out!");
+        request.getSession().invalidate();
+
         request.getRequestDispatcher(login).forward(request, response);
     }
 }

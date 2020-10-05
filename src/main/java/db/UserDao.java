@@ -1,25 +1,24 @@
 package db;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import model.entity.User;
 
-public class UserDao {
-    public static boolean validate(String name,String pass){
-        boolean status=false;
-        try{
-            SQLDatabaseManager sqlDatabaseManager = SQLDatabaseManager.getInstance();
-            Connection con= sqlDatabaseManager.getConnection();
+import java.util.Map;
 
-            PreparedStatement ps=con.prepareStatement(
-                    "select * from person where login=? and pass=?");
-            ps.setString(1,name);
-            ps.setString(2,pass);
+public interface UserDao extends DAO<User> {
+    @Override
+    void delete(User o);
 
-            ResultSet rs=ps.executeQuery();
-            status=rs.next();
+    @Override
+    void update(User o);
 
-        }catch(Exception e){System.out.println(e);}
-        return status;
-    }
+    @Override
+    int save(User o);
+
+    @Override
+    Map getAll();
+
+    boolean validate(String name, String pass);
+
+    User getCurrentUser(User user);
+
 }

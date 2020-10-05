@@ -7,7 +7,6 @@ import java.io.IOException;
 
 @WebFilter(urlPatterns = "/*")
 public class LoginRequiredFilter implements Filter {
-
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -16,7 +15,8 @@ public class LoginRequiredFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        if (request.getSession().getAttribute("name") != null) {
+        if (request.getSession().getAttribute("user") != null
+                || request.getRequestURI().equals("/registration")) {
             filterChain.doFilter(request, servletResponse);
         } else {
             RequestDispatcher rd = servletRequest.getRequestDispatcher("login");

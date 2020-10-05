@@ -1,7 +1,6 @@
 package model.entity;
 
 import java.sql.Time;
-import java.util.List;
 
 public class Task {
 
@@ -9,19 +8,23 @@ public class Task {
     String taskName;
     Time recordingTime;
     int amountOfTime;
+    int idUser;
+    int idStatus;
 
 
-    public Task(String taskName, Time startTime, int amountOfTime) {
-        this.taskName = taskName;
-        this.recordingTime = startTime;
-        this.amountOfTime = amountOfTime;
-    }
-
-    public Task(int idTask, String taskName, Time startTime, int amountOfTime) {
+    public Task(int idTask, String taskName, Time recordingTime, int amountOfTime, int idStatus) {
         this.idTask = idTask;
         this.taskName = taskName;
-        this.recordingTime = startTime;
+        this.recordingTime = recordingTime;
         this.amountOfTime = amountOfTime;
+        this.idStatus = idStatus;
+    }
+
+    public Task(String taskName, Time recordingTime, int amountOfTime, int idUser) {
+        this.taskName = taskName;
+        this.recordingTime = recordingTime;
+        this.amountOfTime = amountOfTime;
+        this.idUser = idUser;
     }
 
     public int getIdTask() {
@@ -54,5 +57,21 @@ public class Task {
 
     public void setAmountOfTime(int amountOfTime) {
         this.amountOfTime = amountOfTime;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    public int getIdStatus() {
+        return idStatus;
+    }
+
+    public void setIdStatus(int idStatus) {
+        this.idStatus = idStatus;
     }
 }
