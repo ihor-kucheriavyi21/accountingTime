@@ -22,7 +22,7 @@ public class UpdateTaskServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(req.getParameter("id"));
         String nameTask = req.getParameter("name");
-        int amountOfTime = Integer.parseInt(req.getParameter("time"));
+        String amountOfTime = req.getParameter("time");
 
         User user = (User) req.getSession().getAttribute("user");
 
@@ -31,7 +31,7 @@ public class UpdateTaskServlet extends HttpServlet {
         }
         Task task = user.tasks.get(id);
         task.setTaskName(nameTask);
-        task.setAmountOfTime(amountOfTime);
+        task.setAmountOfTime(Integer.parseInt(amountOfTime));
         task.setRecordingTime(new Time(System.currentTimeMillis()));
         taskDao.update(task);
         resp.sendRedirect(req.getContextPath() + "/main");

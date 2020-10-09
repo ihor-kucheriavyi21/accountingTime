@@ -14,6 +14,7 @@
 <li>Name: <c:out value="${requestScope.task.taskName}"/></li>
 <li>Recording time: <c:out value="${requestScope.task.recordingTime}"/></li>
 <li>Amount Of time: <c:out value="${requestScope.task.amountOfTime}"/></li>
+<li>Category </li>
 <form method="post" action="<c:url value='update-task'/> ">
     <input type="number" hidden name="id" value="${requestScope.task.idTask}">
     <label><input type="text" name="name"></label>Name task<br>

@@ -14,15 +14,9 @@ import java.sql.Time;
 
 public class AddTaskServlet extends HttpServlet {
     //todo add new task in MAIN PAGE
-    TaskService taskService = new TaskService();
-    private final static String addTask = "/WEB-INF/view/addTask.jsp";
-    private UserService userService = new UserService();
+    TaskService taskService = ServiceFactory.getTaskService();
+    private UserService userService = ServiceFactory.getUserService();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        req.getRequestDispatcher(addTask).forward(req, resp);
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -40,7 +34,9 @@ public class AddTaskServlet extends HttpServlet {
 
         final String name = req.getParameter("name");
         final int amountOfTime = Integer.parseInt(req.getParameter("time"));
-        Task task = new Task(name, new Time(System.currentTimeMillis()), amountOfTime, idUser);
+        int categoryId = Integer.parseInt(req.getParameter("getCategory"));
+        Category category = taskService.getCategoryById(categoryId);
+        Task task = new Task(name, new Time(System.currentTimeMillis()), amountOfTime, category, idUser);
 
         int idTask = taskService.saveTask(task);
 

@@ -14,6 +14,7 @@
     <th>Name</th>
     <th>Recording time</th>
     <th>Amount of time</th>
+    <th>Category</th>
     <th>Status</th>
 
     </thead>
@@ -24,8 +25,32 @@
             <td>Name: <c:out value="${task.taskName}"/></td>
             <td>Recording time: <c:out value="${task.recordingTime}"/></td>
             <td>Amount Of time: <c:out value="${task.amountOfTime}"/></td>
-            <td>Status: <c:out value="${task.idStatus}"/></td>
+            <td>Category: <c:out value="${task.category.name}"/></td>
+            <td>Status: <c:choose>
+                <c:when test="${task.idStatus == 1 }"><a style="color: grey">Verification</a></c:when>
+                <c:when test="${task.idStatus == 2 }"><a style="color: green">Confirmed</a></c:when>
+                <c:when test="${task.idStatus == 3 }"><a style="color: red">Rejected</a></c:when>
+                <c:otherwise>Undefined</c:otherwise>
+            </c:choose>
+            </td>
+            <td>
+                <form method="post" action="<c:url value='/verification'/>">
+                    <input type="number" hidden name="id" value="${task.idTask}">
+                    <input type="number" hidden name="idStatus" value="3">
 
+                    <input type="submit"
+                           class="btn btn-danger"
+                           value="Reject" name="Reject">
+                </form>
+            </td>
+            <td>
+                <form method="post" action="/verification">
+                    <input type="number" hidden name="id" value="${task.idTask}">
+                    <input type="number" hidden name="idStatus" value="2">
+                    <input type="submit"
+                           class="btn btn-info" value="Update" name="Update">
+                </form>
+            </td>
         </tr>
 
     </c:forEach>

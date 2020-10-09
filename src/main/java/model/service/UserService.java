@@ -1,14 +1,14 @@
 package model.service;
 
-import db.UserDaoImpl;
+import db.UserDao;
 import model.entity.User;
 
 public class UserService {
     //todo move to constructor
-    private UserDaoImpl userDao;
+    private UserDao userDao;
 
-    public UserService() {
-        userDao = new UserDaoImpl();
+    public UserService(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     public int getUserId(User user) {

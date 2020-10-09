@@ -85,5 +85,16 @@
         <url-pattern>/allTask</url-pattern>
     </servlet-mapping>
 
+    <!--Verification task-->
+    <servlet>
+        <servlet-name>VerificationTask</servlet-name>
+        <servlet-class>servlet.task.VerificationTask</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>VerificationTask</servlet-name>
+        <url-pattern>/verification</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

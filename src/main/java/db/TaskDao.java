@@ -20,4 +20,6 @@ public interface TaskDao extends DAO<Task> {
 
     Map<Integer, Task> getAllForCurrentUser(int idUser);
 
+    Task getTaskById(int idTask);
+
 }

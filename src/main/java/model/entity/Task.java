@@ -8,9 +8,18 @@ public class Task {
     String taskName;
     Time recordingTime;
     int amountOfTime;
+    Category category;
     int idUser;
     int idStatus;
 
+    public Task(int idTask, String taskName, Time recordingTime, int amountOfTime, int idUser, int idStatus) {
+        this.idTask = idTask;
+        this.taskName = taskName;
+        this.recordingTime = recordingTime;
+        this.amountOfTime = amountOfTime;
+        this.idUser = idUser;
+        this.idStatus = idStatus;
+    }
 
     public Task(int idTask, String taskName, Time recordingTime, int amountOfTime, int idStatus) {
         this.idTask = idTask;
@@ -24,6 +33,24 @@ public class Task {
         this.taskName = taskName;
         this.recordingTime = recordingTime;
         this.amountOfTime = amountOfTime;
+        this.idUser = idUser;
+    }
+
+    public Task(int idTask, String taskName, Time time, int amountOfTime, Category category, int idPerson, int idStatus) {
+        this.idTask = idTask;
+        this.taskName = taskName;
+        this.recordingTime = time;
+        this.amountOfTime = amountOfTime;
+        this.category = category;
+        this.idUser = idPerson;
+        this.idStatus = idStatus;
+    }
+
+    public Task(String name, Time time, int amountOfTime, Category category, int idUser) {
+        this.taskName = name;
+        this.recordingTime = time;
+        this.amountOfTime = amountOfTime;
+        this.category = category;
         this.idUser = idUser;
     }
 
@@ -74,4 +101,14 @@ public class Task {
     public void setIdStatus(int idStatus) {
         this.idStatus = idStatus;
     }
+
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
 }

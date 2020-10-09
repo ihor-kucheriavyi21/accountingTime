@@ -18,13 +18,17 @@ public class SQLDatabaseManager {
     //String url = "jdbc:mysql://localhost:3306/testBDForProject?serverTimezone=Europe/Kiev&useSSL=false&user=root&password=1234";
 
     private SQLDatabaseManager() {
+        dataSource = new ComboPooledDataSource();
+
         try {
-            cpds.setDriverClass("com.mysql.cj.jdbc.Driver");
+            dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
             System.out.println(getUrlFromProperties());
-            cpds.setJdbcUrl(getUrlFromProperties());
-            //cpds.setJdbcUrl("jdbc:mysql://localhost:3306/testBDForProject?serverTimezone=Europe/Kiev&useSSL=false");
-            cpds.setUser("root");
-            cpds.setPassword("1234");
+            dataSource.setJdbcUrl(getUrlFromProperties());
+            dataSource.setUser("root");
+            dataSource.setPassword("1234");
+            dataSource.setMinPoolSize(5);
+            dataSource.setCheckoutTimeout(100000);
+            dataSource.setMaxPoolSize(30);
         } catch (PropertyVetoException e) {
             e.printStackTrace();
         }
@@ -38,8 +42,7 @@ public class SQLDatabaseManager {
     }
 
     public Connection getConnection() throws SQLException {
-
-        return cpds.getConnection();
+        return dataSource.getConnection();
     }
 
     private String getUrlFromProperties() {

@@ -1,5 +1,6 @@
 package servlet;
 
+import factory.ServiceFactory;
 import model.entity.User;
 import model.service.UserService;
 
@@ -11,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
-    private final UserService userService = new UserService();
-
+    private final UserService userService = ServiceFactory.getUserService();
     private final static String LOGIN = "/WEB-INF/view/login.jsp";
 
     @Override

@@ -98,7 +98,8 @@ public class UserDaoImpl implements UserDao {
         user.setIdRole(1);
         int idUser = -1;
         String query = "INSERT INTO person (login, pass, idRole) values (?,?,?)";
-        try (PreparedStatement preparedStatement = sqlDatabaseManager.getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+        try (Connection connection = sqlDatabaseManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getPass());
             preparedStatement.setInt(3, user.getIdRole());

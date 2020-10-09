@@ -30,6 +30,7 @@ public class MainPageServlet extends HttpServlet {
         System.out.println(user.tasks);
         user.tasks = taskDao.getAllForCurrentUser(userService.getUserId(user));
         req.setAttribute("tasks", user.tasks.values());
+        req.setAttribute("categories", taskService.getAllCategory());
         System.out.println(user.getIdRole());
 
         req.getRequestDispatcher(index).forward(req, resp);

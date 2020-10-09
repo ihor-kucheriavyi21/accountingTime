@@ -1,20 +1,20 @@
 
-{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(âÍÚñûÿÿÿÿ8’îÁÉÍ.
-o
-java:S19892"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ú£ñU8„É³¬Ë.
-z
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(›áù ùÿÿÿÿ8ñÌ·ÒÍ.
-ƒ
-java:S1989"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(Ÿ Ò¹şÿÿÿÿ8Æ¦ÂÉÍ.
-{
-java:S1989*"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(í¸­÷øÿÿÿÿ8„É³¬Ë.
-g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(âÍÚñûÿÿÿÿ8’îÁÉÍ.
-
-java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(»éÂúúÿÿÿÿ8·›ªË.
-o
-java:S1989""SHandle the following exception that could be thrown by "sendRedirect": IOException.(ú£ñU8„É³¬Ë.
-z
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(•Ô¿£ùÿÿÿÿ8¨±ˆ©Î.
 T
-java:S1135"2Complete the task associated to this TODO comment.(§¯²øÿÿÿÿ8‘®”ıÎ.
+java:S1135"2Complete the task associated to this TODO comment.(§¯²øÿÿÿÿ8Ë£‡ÎÏ.
+u
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ì¸åò8¨±ˆ©Î.
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(âÍÚñûÿÿÿÿ8’îÁÉÍ.
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(âÍÚñûÿÿÿÿ8’îÁÉÍ.
+
+java:S1989 "lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(»éÂúúÿÿÿÿ8·›ªË.
+{
+java:S1989+"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(í¸­÷øÿÿÿÿ8„É³¬Ë.
+u
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¤íÎĞ8Ë£‡ÎÏ.
+ƒ
+java:S1989"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(Ÿ Ò¹şÿÿÿÿ8Æ¦ÂÉÍ.
+o
+java:S1989#"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ú£ñU8„É³¬Ë.
+o
+java:S19893"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ú£ñU8„É³¬Ë.

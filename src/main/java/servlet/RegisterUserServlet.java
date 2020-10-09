@@ -1,5 +1,6 @@
 package servlet;
 
+import factory.ServiceFactory;
 import model.entity.User;
 import model.service.UserService;
 
@@ -11,13 +12,13 @@ import java.io.IOException;
 
 public class RegisterUserServlet extends HttpServlet {
     private final static String addUser = "/WEB-INF/view/addUser.jsp";
-    UserService userService = new UserService();
+    UserService userService = ServiceFactory.getUserService();
     //todo Create exception class for validate regitsration
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher(addUser).forward(req, resp);
     }
-
+    //todo chech jsp login not redirect this page
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF8");
