@@ -1,5 +1,6 @@
 package model.entity;
 
+import java.util.List;
 import java.util.Map;
 
 public class User {
@@ -9,7 +10,7 @@ public class User {
         dbManager.insertTask(new Task("someTask", new Time(System.currentTimeMillis()), 9));
     }*/
 
-    public Map<Integer, Task> tasks;
+    public List<Task> tasks;
     private int id;
 
     private String name;

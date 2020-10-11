@@ -41,8 +41,6 @@ I
 src/main/java/db/DAO.java,d\e\dee0ca889b12d82ff285db92cb726dd2bdd34881
 M
 src/main/java/db/TaskDao.java,6\7\6730a197d701a62733d0296f67937bef9ab5e050
-X
-(src/main/webapp/WEB-INF/view/addTask.jsp,c\c\cc723e9a9893aab11706b22fec8bf07472e81fbc
 a
 1src/main/java/servlet/task/UpdateTaskServlet.java,d\1\d194c4ace2cbfd9b628f666de2f0a9f8f10004a3
 a
@@ -88,3 +86,9 @@ Q
 !src/main/java/db/CategoryDao.java,4\b\4bbbbfb05c1a388dab1d528590987fb2f64823f7
 U
 %src/main/java/db/CategoryDaoImpl.java,d\7\d7544704adf5273076bc7d0765d349c400ec5d83
+Q
+!src/main/resources/app.properties,7\1\71eabe60850628ac467d39be937efda3c107e4da
+Y
+)src/main/java/servlet/ProfileServlet.java,1\a\1a1b39e82ad0f4ecc17ef6550e4c92db03a26b39
+X
+(src/main/webapp/WEB-INF/view/profile.jsp,4\5\450e13be0994604f9253aefa759df1db4f3498ab

@@ -13,10 +13,9 @@ import java.io.IOException;
 import java.sql.Time;
 
 public class AddTaskServlet extends HttpServlet {
-    //todo add new task in MAIN PAGE
     TaskService taskService = ServiceFactory.getTaskService();
     private UserService userService = ServiceFactory.getUserService();
-
+    //todo check prg pattern
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -42,7 +41,7 @@ public class AddTaskServlet extends HttpServlet {
 
         task.setIdTask(idTask);
         task.setIdTask(idUser);
-        user.tasks.put(idTask, task);
+        user.tasks.add(task);
         resp.sendRedirect(req.getContextPath() + "/main");
     }
 

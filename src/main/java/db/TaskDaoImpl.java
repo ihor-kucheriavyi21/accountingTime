@@ -3,8 +3,9 @@ package db;
 import model.entity.Task;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,15 +16,15 @@ public class TaskDaoImpl implements TaskDao {
 
     //todo check Query afted adding CATEGORY
     @Override
-    public Map getAll() {
-        Map<Integer, Task> map = null;
+    public List getAll() {
+        List<Task> list = null;
         try (Connection connection = sqlDatabaseManager.getConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT  * FROM task")) {
-            map = putInMap(statement);
+            list = putInList(statement);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return map;
+        return list;
     }
 
     //todo exception зробити for Query
@@ -104,16 +105,16 @@ public class TaskDaoImpl implements TaskDao {
     }
 
     @Override
-    public Map<Integer, Task> getAllForCurrentUser(int idUser) {
-        Map<Integer, Task> map = null;
+    public List<Task> getAllForCurrentUser(int idUser) {
+        List<Task> list = null;
         try (Connection connection = sqlDatabaseManager.getConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT  * FROM task where idPerson = ? ")) {
             statement.setInt(1, idUser);
-            map = putInMap(statement);
+            list = putInList(statement);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return map;
+        return list;
     }
 
     @Override
@@ -149,8 +150,8 @@ public class TaskDaoImpl implements TaskDao {
         return task;
     }
 
-    private Map<Integer, Task> putInMap(PreparedStatement statement) throws SQLException {
-        Map<Integer, Task> map = new ConcurrentHashMap<>();
+    private List<Task> putInList(PreparedStatement statement) throws SQLException {
+        List<Task> list = new ArrayList();
         ResultSet resultSet;
         resultSet = statement.executeQuery();
         while (resultSet.next()) {
@@ -163,10 +164,10 @@ public class TaskDaoImpl implements TaskDao {
             int idStatus = resultSet.getInt(7);
             Task task = new Task(idTask, taskName, time, amountOfTime, categoryDao.getCategoryById(idCategory),
                     idPerson, idStatus);
-            map.put(idTask, task);
+            list.add(task);
         }
         resultSet.close();
-        return map;
+        return list;
 
     }
 }

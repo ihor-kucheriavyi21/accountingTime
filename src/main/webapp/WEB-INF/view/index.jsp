@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    Hello Hokagam
+    <h5>Welcome</h5>
     <br/>
     <table class="table table-striped table-bordered">
         <thead class="thead-dark">
@@ -73,7 +73,7 @@
 
                         </c:forEach>
                     </select></td>
-                <td><input type="submit" class="btn btn-success" value="Add task" name="add"></td>
+                <td><input type="submit" class="btn btn-outline-success" value="Add task" name="add"></td>
                 <td></td>
                 <td></td>
             </form>

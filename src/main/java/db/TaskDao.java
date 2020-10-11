@@ -2,12 +2,12 @@ package db;
 
 import model.entity.Task;
 
-import java.util.Map;
+import java.util.List;
 
 public interface TaskDao extends DAO<Task> {
 
     @Override
-    Map getAll();
+    List<Task> getAll();
 
     @Override
     int save(Task task);
@@ -18,7 +18,7 @@ public interface TaskDao extends DAO<Task> {
     @Override
     void delete(Task task);
 
-    Map<Integer, Task> getAllForCurrentUser(int idUser);
+    List<Task> getAllForCurrentUser(int idUser);
 
     Task getTaskById(int idTask);
 

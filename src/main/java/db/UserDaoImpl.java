@@ -3,7 +3,7 @@ package db;
 import model.entity.User;
 
 import java.sql.*;
-import java.util.Map;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -89,7 +89,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Map<Integer, User> getAll() {
+    public List<User> getAll() {
         return null;
     }
 
@@ -119,7 +119,24 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void update(User user) {
-
+        PreparedStatement preparedStatement = null;
+        try (Connection connection = sqlDatabaseManager.getConnection()) {
+            preparedStatement = connection.prepareStatement("update person SET login = ?, pass =?, idRole = ? where id = ?");
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getPass());
+            preparedStatement.setInt(3, user.getIdRole());
+            preparedStatement.setInt(4, user.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
     }
 
     @Override

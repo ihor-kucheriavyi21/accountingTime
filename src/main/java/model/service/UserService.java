@@ -4,7 +4,6 @@ import db.UserDao;
 import model.entity.User;
 
 public class UserService {
-    //todo move to constructor
     private UserDao userDao;
 
     public UserService(UserDao userDao) {
@@ -19,13 +18,21 @@ public class UserService {
         return userDao.getCurrentUser(user);
     }
 
+    public void updateUser(User user) {
+        userDao.update(user);
+    }
+
     public boolean requestIsValidByFillingFields(String name, String pass) {
-        return (name != null && name.length() > 0)
-                && (pass != null && pass.length() > 0);
+        return (name != null && name.length() > 2)
+                && (pass != null && pass.length() > 2);
     }
 
     public boolean requestIsValidByPass(String pass, String repPass) {
-        return pass.equals(repPass);
+        return pass.equals(repPass) && pass.length() > 2;
+    }
+
+    public boolean requestIsValidByName(String name) {
+        return name.length() > 2;
     }
 
     public int saveUser(User user) {

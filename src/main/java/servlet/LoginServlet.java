@@ -2,10 +2,12 @@ package servlet;
 
 import factory.ServiceFactory;
 import model.entity.User;
+import model.service.TaskService;
 import model.service.UserService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +15,7 @@ import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
     private final UserService userService = ServiceFactory.getUserService();
+    private final TaskService taskService = ServiceFactory.getTaskService();
     private final static String LOGIN = "/WEB-INF/view/login.jsp";
 
     @Override
@@ -30,6 +33,8 @@ public class LoginServlet extends HttpServlet {
         if (isUserValid) {
             User user = userService.getUser(new User(name, password));
             req.getSession().setAttribute("user", user);
+            Cookie cookie = new Cookie("sortNum", "0");
+            resp.addCookie(cookie);
             resp.sendRedirect("/main");
         } else {
             req.setAttribute("errorMessage", "Invalid Credentials");

@@ -26,9 +26,6 @@ public class UpdateTaskServlet extends HttpServlet {
 
         User user = (User) req.getSession().getAttribute("user");
 
-        if (user.tasks.containsKey(id)) {
-            System.out.println("this key EXIST");
-        }
         Task task = user.tasks.get(id);
         task.setTaskName(nameTask);
         task.setAmountOfTime(Integer.parseInt(amountOfTime));

@@ -2,6 +2,7 @@ package db;
 
 import model.entity.User;
 
+import java.util.List;
 import java.util.Map;
 
 public interface UserDao extends DAO<User> {
@@ -15,7 +16,7 @@ public interface UserDao extends DAO<User> {
     int save(User o);
 
     @Override
-    Map getAll();
+    List getAll();
 
     boolean validate(String name, String pass);
 

@@ -96,5 +96,16 @@
         <url-pattern>/verification</url-pattern>
     </servlet-mapping>
 
+    <!--Profile user-->
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>servlet.ProfileServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

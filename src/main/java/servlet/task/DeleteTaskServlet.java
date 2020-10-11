@@ -19,9 +19,9 @@ public class DeleteTaskServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         User user = (User) request.getSession().getAttribute("user");
         int idTask = Integer.parseInt(request.getParameter("id"));
-        Task task = user.tasks.get(idTask);
-        user.tasks.remove(idTask);
+
+        Task task = taskService.getTaskById(idTask);
         taskService.deleteTask(task);
-        response.sendRedirect(request.getContextPath() + "/main");
+        response.sendRedirect(request.getContextPath() +"main");
     }
 }

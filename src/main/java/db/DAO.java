@@ -1,9 +1,10 @@
 package db;
 
+import java.util.List;
 import java.util.Map;
 
 public interface DAO<T> {
-    Map<Integer, T> getAll();
+    List<T> getAll();
 
     int save(T t);
 

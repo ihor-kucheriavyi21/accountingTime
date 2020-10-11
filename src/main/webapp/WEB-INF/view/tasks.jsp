@@ -8,6 +8,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../template/navbar.jspf" %>
 <%@ include file="../template/header.jspf" %>
+<div>
+    Sorted by:
+    <form method="get" action="<c:url value='/allTask'/>">
+
+        <select name="sortNumber" onchange="this.form.submit()">
+            <option>Choose sort</option>
+            <option value="0">Sort by ID</option>
+            <option value="1">Sort by name</option>
+            <option value="2">Sort by category</option>
+        </select>
+
+    </form>
+    <c:out value="${requestScope.nameSort}"/>
+</div>
 <table class="table table-striped">
     <thead>
     <th>Id</th>
@@ -16,6 +30,8 @@
     <th>Amount of time</th>
     <th>Category</th>
     <th>Status</th>
+    <th></th>
+    <th></th>
 
     </thead>
     <tbody>
@@ -48,7 +64,7 @@
                     <input type="number" hidden name="id" value="${task.idTask}">
                     <input type="number" hidden name="idStatus" value="2">
                     <input type="submit"
-                           class="btn btn-info" value="Update" name="Update">
+                           class="btn btn-success" value="Confirm" name="Confirm">
                 </form>
             </td>
         </tr>
