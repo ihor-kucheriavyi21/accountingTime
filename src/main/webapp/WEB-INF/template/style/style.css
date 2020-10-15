@@ -1,0 +1,6 @@
+.nav-item select.custom-select{
+    border: 0px;
+    outline: 0px;
+    background-color: transparent;
+    color: whitesmoke;
+}

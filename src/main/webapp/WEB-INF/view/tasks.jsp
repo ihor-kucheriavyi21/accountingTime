@@ -7,69 +7,104 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../template/navbar.jspf" %>
-<%@ include file="../template/header.jspf" %>
-<div>
-    Sorted by:
-    <form method="get" action="<c:url value='/allTask'/>">
+<div class="container">
+    <div>
+        <form method="get" action="<c:url value='/allTask'/>">
+            <div class="form-row">
+                <div class="form-group col-md-3">
 
-        <select name="sortNumber" onchange="this.form.submit()">
-            <option>Choose sort</option>
-            <option value="0">Sort by ID</option>
-            <option value="1">Sort by name</option>
-            <option value="2">Sort by category</option>
-        </select>
+                    <select class="custom-select" name="sortNumber" onchange="this.form.submit()">
+                        <option><fmt:message key="tasks_jsp.option.sort.chooseSort"/></option>
+                        <option value="0"><fmt:message key="tasks_jsp.option.sort.byId"/></option>
+                        <option value="1"><fmt:message key="tasks_jsp.option.sort.byName"/></option>
+                        <option value="2"><fmt:message key="tasks_jsp.option.sort.byCategory"/></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
 
-    </form>
-    <c:out value="${requestScope.nameSort}"/>
+                    <label class="badge badge-info">
+                        <c:choose>
+                            <c:when test="${requestScope.nameSort == 1 }">
+                                <fmt:message
+                                        key="tasks_jsp.label.sortByName"/>
+
+                            </c:when>
+                            <c:when test="${requestScope.nameSort == 2 }">
+                                <fmt:message
+                                        key="tasks_jsp.label.sortByCategory"/>
+                            </c:when>
+                            <c:otherwise><fmt:message
+                                    key="tasks_jsp.label.sortById"/></c:otherwise>
+
+                        </c:choose>
+                    </label>
+
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <th><fmt:message key="table.col.id"/></th>
+        <th><fmt:message key="tasks_jsp.table.col.idUser"/></th>
+        <th><fmt:message key="table.col.name"/></th>
+        <th><fmt:message key="table.col.recordingTime"/></th>
+        <th><fmt:message key="table.col.amountOfTime"/></th>
+        <th><fmt:message key="table.col.category"/></th>
+        <th><fmt:message key="table.col.status"/></th>
+        <th></th>
+        <th></th>
+
+        </thead>
+        <tbody>
+        <c:forEach var="task" items="${requestScope.tasks}">
+            <tr>
+                <td><c:out value="${task.idTask}"/></td>
+                <td><c:out value="${task.idUser}"/></td>
+                <td><c:out value="${task.taskName}"/></td>
+                <td><c:out value="${task.recordingTime}"/></td>
+                <td><c:out value="${task.amountOfTime}"/></td>
+                <td><c:if test="${language.equals('ru_RU')}">
+                    <c:out value="${task.category.nameRu}"/>
+                </c:if>
+                    <c:if test="${language.equals('en_EN')}">
+                        <c:out value="${task.category.nameEng}"/>
+                    </c:if></td>
+                <td><c:choose>
+                    <c:when test="${task.idStatus == 1 }"><a style="color: grey"><fmt:message
+                            key="table.status.verification"/></a></c:when>
+                    <c:when test="${task.idStatus == 2 }"><a style="color: green"><fmt:message
+                            key="table.status.confirmed"/></a></c:when>
+                    <c:when test="${task.idStatus == 3 }"><a style="color: red"><fmt:message
+                            key="table.status.rejected"/></a></c:when>
+                    <c:otherwise>Undefined</c:otherwise>
+                </c:choose>
+                </td>
+                <td>
+                    <form method="post" action="<c:url value='/verification'/>">
+                        <input type="number" hidden name="id" value="${task.idTask}">
+                        <input type="number" hidden name="idStatus" value="3">
+                        <input type="submit"
+                               class="btn btn-danger"
+                               value='<fmt:message key="tasks_jsp.button.reject"/>' name="Reject">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/verification">
+                        <input type="number" hidden name="id" value="${task.idTask}">
+                        <input type="number" hidden name="idStatus" value="2">
+                        <input type="submit"
+                               class="btn btn-success" value='<fmt:message key="tasks_jsp.button.confirm"/>'
+                               name="Confirm">
+                    </form>
+                </td>
+            </tr>
+
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
-<table class="table table-striped">
-    <thead>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Recording time</th>
-    <th>Amount of time</th>
-    <th>Category</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-
-    </thead>
-    <tbody>
-    <c:forEach var="task" items="${requestScope.tasks}">
-        <tr>
-            <td>Id: <c:out value="${task.idTask}"/></td>
-            <td>Name: <c:out value="${task.taskName}"/></td>
-            <td>Recording time: <c:out value="${task.recordingTime}"/></td>
-            <td>Amount Of time: <c:out value="${task.amountOfTime}"/></td>
-            <td>Category: <c:out value="${task.category.name}"/></td>
-            <td>Status: <c:choose>
-                <c:when test="${task.idStatus == 1 }"><a style="color: grey">Verification</a></c:when>
-                <c:when test="${task.idStatus == 2 }"><a style="color: green">Confirmed</a></c:when>
-                <c:when test="${task.idStatus == 3 }"><a style="color: red">Rejected</a></c:when>
-                <c:otherwise>Undefined</c:otherwise>
-            </c:choose>
-            </td>
-            <td>
-                <form method="post" action="<c:url value='/verification'/>">
-                    <input type="number" hidden name="id" value="${task.idTask}">
-                    <input type="number" hidden name="idStatus" value="3">
-
-                    <input type="submit"
-                           class="btn btn-danger"
-                           value="Reject" name="Reject">
-                </form>
-            </td>
-            <td>
-                <form method="post" action="/verification">
-                    <input type="number" hidden name="id" value="${task.idTask}">
-                    <input type="number" hidden name="idStatus" value="2">
-                    <input type="submit"
-                           class="btn btn-success" value="Confirm" name="Confirm">
-                </form>
-            </td>
-        </tr>
-
-    </c:forEach>
-    </tbody>
-</table>
 <%@ include file="../template/footer.jspf" %>

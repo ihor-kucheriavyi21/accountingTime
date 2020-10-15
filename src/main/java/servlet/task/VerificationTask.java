@@ -2,7 +2,6 @@ package servlet.task;
 
 import factory.ServiceFactory;
 import model.entity.Task;
-import model.entity.User;
 import model.service.TaskService;
 
 import javax.servlet.ServletException;
@@ -12,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class VerificationTask extends HttpServlet {
-    TaskService taskService = ServiceFactory.getTaskService();
+    private static final TaskService taskService = ServiceFactory.getTaskService();
 
+    //todo check if normalno in jsp show id status
+    //todo font bold
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");

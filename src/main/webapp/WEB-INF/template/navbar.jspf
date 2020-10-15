@@ -1,31 +1,100 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<%@ include file="../template/header.jspf" %>
+
 
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
 
     <div class="">
-        <a href="/main" class="navbar-brand">Accounting</a>
+        <p class="navbar-brand"><img
+                src="https://worldluxrealty.com/sites/default/files/inline/images/proizvodstvennii_i_utverjdennii_kalendar_2020_pravitelstvo_utverdilo.png"
+                width="60" height="45" alt="image"></p>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="/main">Home</a></li>
-            <%--
-                        <li class="nav-item"><a class="nav-link" href="http://joyreactor.cc/">Funny Pictures</a></li>
-            --%>
-            <c:if test="${sessionScope.user.idRole==2}">
-                <li class="nav-item"><a class="nav-link" href="/allTask">All tasks</a></li>
-            </c:if>
-            <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+        <c:if test="${sessionScope.user!=null}">
+            <ul class="navbar-nav mr-auto">
+                <c:if test="${sessionScope.user.idRole==1}">
 
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="navbar-text"><a>Welcome <c:out value="${sessionScope.user.name}"/></a></li>
-            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
-        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/main">
+                            <fmt:message key="navbar_jspf.home"/>
+                        </a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.user.idRole==2}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/allTask">
+                            <fmt:message
+                                    key="navbar_jspf.allTask"/>
+                        </a>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.user.idRole==2}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="categories">
+                            <fmt:message
+                                    key="navbar_jspf.allCategory"/>
+                        </a>
+                    </li>
+                </c:if>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">
+                        <c:out value="${sessionScope.user.name}"/>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                    <form action="<c:url  value="${requestScope['javax.servlet.forward.request_uri']}"/>  ">
+                        <select class="custom-select"
+                                name="language" onchange="this.form.submit();">
+                            <option value="en_EN" ${language == 'en_EN' ? 'selected' : ''} style="color: darkblue">
+                                <fmt:message
+                                        key="header_jsp.languageEng"/></option>
+                            <option value="ru_RU" ${language == 'ru_RU' ? 'selected' : ''} style="color: darkblue">
+                                <fmt:message
+                                        key="header_jsp.languageRuss"/></option>
+                        </select>
+                    </form>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/logout">
+                    <fmt:message key="navbar_jspf.logout"/></a></li>
+            </ul>
+
+        </c:if>
+
+        <c:if test="${sessionScope.user==null}">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/registration">
+                        <fmt:message
+                                key="navbar_jspf.registration"/>
+                    </a></li>
+                <li class="nav-item"><a class="nav-link" href="/login"><fmt:message key="navbar_jspf.login"/></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                    <form>
+                        <select class="custom-select"
+                                name="language" onchange="this.form.submit()">
+                            <option value="en_EN" ${language == 'en_EN' ? 'selected' : ''} style="color: darkblue">
+                                <fmt:message
+                                        key="header_jsp.languageEng"/></option>
+                            <option value="ru_RU" ${language == 'ru_RU' ? 'selected' : ''} style="color: darkblue">
+                                <fmt:message
+                                        key="header_jsp.languageRuss"/></option>
+                        </select>
+                    </form>
+                </li>
+            </ul>
+        </c:if>
+
     </div>
-
 </nav>
+<br/>
+
+<br/>

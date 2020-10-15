@@ -1,6 +1,8 @@
 package db;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.beans.PropertyVetoException;
 import java.io.IOException;
@@ -8,11 +10,10 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class SQLDatabaseManager {
-    private static final Logger logger = Logger.getLogger(SQLDatabaseManager.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(SQLDatabaseManager.class.getName());
     private static SQLDatabaseManager sqlDatabaseManager;
     private static ComboPooledDataSource cpds = new ComboPooledDataSource();
     //String url = "jdbc:mysql://localhost:3306/testBDForProject?serverTimezone=Europe/Kiev&useSSL=false&user=root&password=1234";
@@ -47,7 +48,7 @@ public class SQLDatabaseManager {
 
     private String getUrlFromProperties() {
         String out = null;
-        InputStream input = null;
+        InputStream input;
         try {
             input = this.getClass().getClassLoader().getResourceAsStream("app.properties");
             Properties prop = new Properties();
@@ -57,9 +58,9 @@ public class SQLDatabaseManager {
 
             // get the property value and print it out
             out = prop.getProperty("connectionUrl");
-            System.out.println(out);
+            LOGGER.info(out);
         } catch (IOException ex) {
-            logger.log(Level.WARNING, ex.getMessage());
+            LOGGER.log(Level.ERROR, ex.getMessage());
         }
         return out;
     }

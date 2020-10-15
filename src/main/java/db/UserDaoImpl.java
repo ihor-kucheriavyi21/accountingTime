@@ -1,16 +1,17 @@
 package db;
 
 import model.entity.User;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class UserDaoImpl implements UserDao {
 
     //todo check Query
-    private static final Logger logger = Logger.getLogger(UserDaoImpl.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(UserDaoImpl.class.getName());
 
     SQLDatabaseManager sqlDatabaseManager = SQLDatabaseManager.getInstance();
 
@@ -30,12 +31,13 @@ public class UserDaoImpl implements UserDao {
             status = rs.next();
 
         } catch (Exception e) {
-            logger.log(Level.WARNING, e.getMessage());
+            LOGGER.log(Level.ERROR, e.getMessage());
         } finally {
             try {
-                rs.close();
+                if (rs != null)
+                    rs.close();
             } catch (SQLException throwables) {
-                logger.log(Level.WARNING, throwables.getMessage());
+                LOGGER.log(Level.ERROR, throwables.getMessage());
             }
         }
         return status;
@@ -65,32 +67,56 @@ public class UserDaoImpl implements UserDao {
             }
             System.out.println("FROM USER SOUT ID" + idUser);
         } catch (SQLException throwables) {
-            logger.log(Level.WARNING, throwables.getMessage());
+            LOGGER.log(Level.ERROR, throwables.getMessage());
         } finally {
             if (ps != null) {
                 try {
                     ps.close();
                 } catch (SQLException throwables) {
-                    logger.log(Level.WARNING, throwables.getMessage());
+                    LOGGER.log(Level.ERROR, throwables.getMessage());
                 }
             }
             if (rs != null) {
                 try {
                     rs.close();
                 } catch (SQLException throwables) {
-                    logger.log(Level.WARNING, throwables.getMessage());
+                    LOGGER.log(Level.ERROR, throwables.getMessage());
                 }
             }
         }
         user = new User(idUser, login, pass, idRole);
         return user;
 
-
     }
 
     @Override
     public List<User> getAll() {
-        return null;
+        List<User> list = new ArrayList();
+        ResultSet resultSet = null;
+        try (Connection connection = sqlDatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT  * FROM user")) {
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int idUser = resultSet.getInt(1);
+                String username = resultSet.getString(2);
+                String pass = resultSet.getString(3);
+                int idRole = resultSet.getInt(4);
+                User user = new User(idUser, username, pass, idRole);
+                list.add(user);
+            }
+        } catch (SQLException throwables) {
+            LOGGER.error("Get all exception", throwables);
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException throwables) {
+                    LOGGER.error("Get all exception", throwables);
+                }
+            }
+        }
+        return list;
     }
 
     @Override
@@ -109,10 +135,7 @@ public class UserDaoImpl implements UserDao {
                 idUser = resultSet.getInt(1);
 
         } catch (SQLException throwables) {
-            logger.log(Level.WARNING, throwables.getMessage());
-        }
-        if (idUser == -1) {
-            System.out.println("SOMETHING WENT WRONG");
+            LOGGER.log(Level.ERROR, throwables.getMessage());
         }
         return idUser;
     }
@@ -128,19 +151,33 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setInt(4, user.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.log(Level.ERROR, throwables.getMessage());
         } finally {
             try {
                 if (preparedStatement != null)
                     preparedStatement.close();
             } catch (SQLException throwables) {
-                throwables.printStackTrace();
+                LOGGER.log(Level.ERROR, throwables.getMessage());
             }
         }
     }
 
     @Override
     public void delete(User user) {
-
+        PreparedStatement preparedStatement = null;
+        try (Connection connection = sqlDatabaseManager.getConnection()) {
+            preparedStatement = connection.prepareStatement("delete from user where id = ?");
+            preparedStatement.setInt(1, user.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            LOGGER.error("Delete user exception", throwables);
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } catch (SQLException throwables) {
+                LOGGER.error("Prepared statement exception", throwables);
+            }
+        }
     }
 }

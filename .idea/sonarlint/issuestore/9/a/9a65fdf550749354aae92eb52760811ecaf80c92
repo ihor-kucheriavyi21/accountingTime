@@ -1,9 +1,11 @@
 
-u
-java:S1989"SHandle the following exception that could be thrown by "sendRedirect": IOException.(…¹ççûÿÿÿÿ8í¦Æ¬Ë.
-u
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¤íÎĞ8Ã´ˆÎÏ.
 {
 java:S1989"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(Ó“„œıÿÿÿÿ8¤Á¡³Ë.
+u
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¤íÎĞ8Ã´ˆÎÏ.
+F
+java:S1481")Remove this unused "user" local variable.(®Ü½ö8±‰‰ÄÑ.
 
 java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(áò‰øÿÿÿÿ8¤ªÔ¬Ë.
+u
+java:S1989"SHandle the following exception that could be thrown by "sendRedirect": IOException.(Ïó‹üÿÿÿÿ8í¦Æ¬Ë.

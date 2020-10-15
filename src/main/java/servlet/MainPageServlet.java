@@ -15,25 +15,17 @@ public class MainPageServlet extends HttpServlet {
     TaskDaoImpl taskDao = new TaskDaoImpl();
     UserService userService = new UserService();
 
-    //todo find themes for bootstrap
-    @Override
-    public void init() throws ServletException {
-        System.out.println("##INITIAL COMM#");
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        System.out.println("#####DOGET MAIN");
         User user = (User) req.getSession().getAttribute("user");
-        System.out.println("INFORMATION ABOUT USER" + user);
-        System.out.println(user.tasks);
-        user.tasks = taskDao.getAllForCurrentUser(userService.getUserId(user));
-        req.setAttribute("tasks", user.tasks.values());
-        req.setAttribute("categories", taskService.getAllCategory());
-        System.out.println(user.getIdRole());
+        LOGGER.info("INFORMATION ABOUT USER" + user);
+        user.tasks = taskService.getAllTaskForCurrentUser(userService.getUserId(user));
+        req.setAttribute("tasks", user.tasks);
+        req.setAttribute("categories", categoryService.getAllCategory());
 
-        req.getRequestDispatcher(index).forward(req, resp);
+        req.getRequestDispatcher(VIEW_MAIN_JSP).forward(req, resp);
     }
 
 

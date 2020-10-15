@@ -1,16 +1,14 @@
 package db;
 
 import model.entity.Task;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class TaskDaoImpl implements TaskDao {
-    private static final Logger logger = Logger.getLogger(TaskDaoImpl.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TaskDaoImpl.class.getName());
     SQLDatabaseManager sqlDatabaseManager = SQLDatabaseManager.getInstance();
     CategoryDao categoryDao = new CategoryDaoImpl();
 
@@ -22,7 +20,7 @@ public class TaskDaoImpl implements TaskDao {
              PreparedStatement statement = connection.prepareStatement("SELECT  * FROM task")) {
             list = putInList(statement);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.error("Get all exception", throwables);
         }
         return list;
     }
@@ -52,11 +50,7 @@ public class TaskDaoImpl implements TaskDao {
                 System.out.println(resultSet.getInt(1));
             }
         } catch (SQLException throwables) {
-            new RuntimeException(throwables);
-            logger.log(Level.WARNING, throwables.getMessage());
-        }
-        if (idTask == -1) {
-            System.out.println("SOMETHING WENT WRONG");
+            LOGGER.error("Save exception", throwables);
         }
         return idTask;
     }
@@ -66,21 +60,22 @@ public class TaskDaoImpl implements TaskDao {
     public void update(Task task) {
         PreparedStatement preparedStatement = null;
         try (Connection connection = sqlDatabaseManager.getConnection()) {
-            preparedStatement = connection.prepareStatement("update task SET name = ?, amountOfTime =?, idStatus = ?, idCategory=? where id = ?");
+            preparedStatement = connection.prepareStatement("update task SET name = ?, amountOfTime =?, idStatus = ?, idCategory=?, recordingTime=? where id = ?");
             preparedStatement.setString(1, task.getTaskName());
             preparedStatement.setInt(2, task.getAmountOfTime());
             preparedStatement.setInt(3, task.getIdStatus());
             preparedStatement.setInt(4, task.getCategory().getId());
-            preparedStatement.setInt(5, task.getIdTask());
+            preparedStatement.setTime(5, task.getRecordingTime());
+            preparedStatement.setInt(6, task.getIdTask());
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.error("Update exception", throwables);
         } finally {
             try {
                 if (preparedStatement != null)
                     preparedStatement.close();
             } catch (SQLException throwables) {
-                throwables.printStackTrace();
+                LOGGER.error("Prepared statement exception", throwables);
             }
         }
     }
@@ -93,13 +88,13 @@ public class TaskDaoImpl implements TaskDao {
             preparedStatement.setInt(1, task.getIdTask());
             preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.error("Delete task exception", throwables);
         } finally {
             try {
                 if (preparedStatement != null)
                     preparedStatement.close();
             } catch (SQLException throwables) {
-                throwables.printStackTrace();
+                LOGGER.error("Prepared statement exception", throwables);
             }
         }
     }
@@ -112,7 +107,7 @@ public class TaskDaoImpl implements TaskDao {
             statement.setInt(1, idUser);
             list = putInList(statement);
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.error("Get all task for user", throwables);
         }
         return list;
     }
@@ -136,13 +131,13 @@ public class TaskDaoImpl implements TaskDao {
                         idPerson, idStatus);
             }
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            LOGGER.error("Get task by id exception", throwables);
         } finally {
             if (resultSet != null) {
                 try {
                     resultSet.close();
                 } catch (SQLException throwables) {
-                    throwables.printStackTrace();
+                    LOGGER.error("Result set exception", throwables);
                 }
             }
         }
@@ -150,23 +145,38 @@ public class TaskDaoImpl implements TaskDao {
         return task;
     }
 
-    private List<Task> putInList(PreparedStatement statement) throws SQLException {
-        List<Task> list = new ArrayList();
-        ResultSet resultSet;
-        resultSet = statement.executeQuery();
-        while (resultSet.next()) {
-            int idTask = resultSet.getInt(1);
-            String taskName = resultSet.getString(2);
-            Time time = resultSet.getTime(3);
-            int amountOfTime = resultSet.getInt(4);
-            int idCategory = resultSet.getInt(5);
-            int idPerson = resultSet.getInt(6);
-            int idStatus = resultSet.getInt(7);
-            Task task = new Task(idTask, taskName, time, amountOfTime, categoryDao.getCategoryById(idCategory),
-                    idPerson, idStatus);
-            list.add(task);
+    private List<Task> putInList(PreparedStatement statement) {
+        ArrayList<Task> list = new ArrayList();
+        ResultSet resultSet = null;
+        try {
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                int idTask = resultSet.getInt(1);
+                String taskName = resultSet.getString(2);
+                Time time = resultSet.getTime(3);
+                int amountOfTime = resultSet.getInt(4);
+                int idCategory = resultSet.getInt(5);
+                int idPerson = resultSet.getInt(6);
+                int idStatus = resultSet.getInt(7);
+                Task task = new Task(idTask, taskName, time, amountOfTime, categoryDao.getCategoryById(idCategory),
+                        idPerson, idStatus);
+                list.add(task);
+            }
+        } catch (SQLException throwables) {
+            LOGGER.error("Put in list exception", throwables);
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException throwables) {
+                    LOGGER.error("Result set exception", throwables);
+
+                }
+            }
         }
-        resultSet.close();
+
+
         return list;
 
     }

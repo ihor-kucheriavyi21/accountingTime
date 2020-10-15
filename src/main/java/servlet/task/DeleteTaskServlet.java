@@ -1,7 +1,6 @@
 package servlet.task;
 
 import model.entity.Task;
-import model.entity.User;
 import model.service.TaskService;
 
 import javax.servlet.ServletException;
@@ -17,7 +16,6 @@ public class DeleteTaskServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
-        User user = (User) request.getSession().getAttribute("user");
         int idTask = Integer.parseInt(request.getParameter("id"));
 
         Task task = taskService.getTaskById(idTask);

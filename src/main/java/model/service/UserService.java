@@ -45,4 +45,22 @@ public class UserService {
             return true;
         return false;
     }
+
+    public boolean checkIfUserRoleIsValid(String URI, User user) {
+        boolean flag = true;
+        if (user == null) {
+            flag = false;
+        } else {
+            if (URI.equals("/categories") && user.getIdRole() == 1) {
+                flag = false;
+            }
+            if (URI.equals("/allTask") && user.getIdRole() == 1) {
+                flag = false;
+            }
+            if (URI.equals("/main") && user.getIdRole() == 2) {
+                flag = false;
+            }
+        }
+        return flag;
+    }
 }

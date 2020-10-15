@@ -1,18 +1,28 @@
 
-v
-java:S1989"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(™Œóœ8ÚúáîĞ.
-o
-java:S1989%"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ú£ñU8ÚúáîĞ.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÔÄ“‘8ÚúáîĞ.
-b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÔÄ“‘8ÚúáîĞ.
 ~
-java:S19891"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ú†Ï8ÚúáîĞ.
-v
-java:S1989,"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(¾¬ç¶8ÚúáîĞ.
+java:S19895"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ú†Ï8ÚúáîĞ.
+z
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(˜´…òüÿÿÿÿ8Äãˆ³Ò.
+o
+java:S1989*"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ú£ñU8ÚúáîĞ.
+O
+java:S1135"2Complete the task associated to this TODO comment.(úå²ß8ÏİåºÑ.
+T
+java:S1135"2Complete the task associated to this TODO comment.(…›¨•şÿÿÿÿ8ÏİåºÑ.
 ‰
-java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À8ÚúáîĞ.
+java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À8ÚúáîĞ.
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÔÄ“‘8ÚúáîĞ.
 v
-java:S1989""YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(Ş„¿8ÚúáîĞ.
+java:S1989%"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(Ş„¿8ÚúáîĞ.
+v
+java:S1989"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(™Œóœ8ÚúáîĞ.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÔÄ“‘8ÚúáîĞ.
+v
+java:S19891"YHandle the following exception that could be thrown by "parseInt": NumberFormatException.(¾¬ç¶8ÚúáîĞ.
 u
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¤íÎĞ8ÚúáîĞ.
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(¤íÎĞ8ÚúáîĞ.
+O
+java:S1135"2Complete the task associated to this TODO comment.(ƒèºÊ8ÏİåºÑ.
+K
+java:S1128".Remove this unused import 'model.entity.User'.(ö¾˜­8üöÊ³Ò.

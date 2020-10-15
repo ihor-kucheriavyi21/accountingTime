@@ -1,22 +1,24 @@
 
 ~
-java:S1989"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ıå…½8Éâ²ÖÍ.
-v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(íåÙƒ8÷áÄÕÍ.
+java:S1989"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ıå…½8û‡ÆÕÍ.
 ~
-java:S1989""aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ıå…½8Éâ²ÖÍ.
-u
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(µÇÙö8¯¸äÕÍ.
-
-java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(»éÂúúÿÿÿÿ8áäÜÕÍ.
-o
-java:S1989+"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ú£ñU8¥¼İÕÍ.
+java:S1989!"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ıå…½8Éâ²ÖÍ.
 b
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(íåÙƒ8÷áÄÕÍ.
-T
-java:S1135"2Complete the task associated to this TODO comment.(°ãÏ«şÿÿÿÿ8ÿáşşÎ.
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(íåÙƒ8÷áÄÕÍ.
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(íåÙƒ8÷áÄÕÍ.
 ~
-java:S1989"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ıå…½8û‡ÆÕÍ.
+java:S1989$"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(ıå…½8Éâ²ÖÍ.
+T
+java:S1135"2Complete the task associated to this TODO comment.(°ãÏ«şÿÿÿÿ8ÿáşşÎ.
+u
+java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(µÇÙö8¯¸äÕÍ.
+
+java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(»éÂúúÿÿÿÿ8áäÜÕÍ.
 O
-java:S1135"2Complete the task associated to this TODO comment.(™¯¿æ8é£òéĞ.
+java:S1135"2Complete the task associated to this TODO comment.(™¯¿æ8é£òéĞ.
 \
-java:S2441'":Make "User" serializable or don't store it in the session.(ƒÖ‹¬şÿÿÿÿ8Ò·ô£Î.
+java:S2441)":Make "User" serializable or don't store it in the session.(ƒÖ‹¬şÿÿÿÿ8Ò·ô£Î.
+o
+java:S1989-"SHandle the following exception that could be thrown by "sendRedirect": IOException.(ú£ñU8¥¼İÕÍ.
+S
+java:S1128"6Remove this unused import 'javax.servlet.http.Cookie'.(«Şªü8¬ÆÃ·Ò.

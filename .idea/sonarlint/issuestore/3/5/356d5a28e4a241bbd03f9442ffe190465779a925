@@ -1,11 +1,20 @@
 
-ƒ
-java:S1989$"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(•ú„Îùÿÿÿÿ8À½‡¨Î.
-o
-java:S1989!"SHandle the following exception that could be thrown by "sendRedirect": IOException.(Ìğ§m8¿ÅÈÌÏ.
+‰
+java:S1989'"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(±Œ©À8Ñ…ÉÑ.
 g
-java:S1124"EReorder the modifiers to comply with the Java Language Specification.(™Ú¼ùÿÿÿÿ8¿ÅÈÌÏ.
-ƒ
-java:S1989"aHandle the following exceptions that could be thrown by "include": ServletException, IOException.(ß‘†¸üÿÿÿÿ8¿ÅÈÌÏ.
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(™Ú¼ùÿÿÿÿ8¿ÅÈÌÏ.
+h
+java:S1192"FDefine a constant instead of duplicating this literal "UTF-8" 4 times.(áò‰øÿÿÿÿ8‡©ĞÉÑ.
 \
-java:S2441 ":Make "User" serializable or don't store it in the session.(ƒÖ‹¬şÿÿÿÿ8¿ÅÈÌÏ.
+java:S24410":Make "User" serializable or don't store it in the session.(ƒÖ‹¬şÿÿÿÿ8¿ÅÈÌÏ.
+S
+java:S1128
+"6Remove this unused import 'javax.servlet.http.Cookie'.(«Şªü8¥Â·Ò.
+ƒ
+java:S1989""aHandle the following exceptions that could be thrown by "include": ServletException, IOException.(ß‘†¸üÿÿÿÿ8¿ÅÈÌÏ.
+ƒ
+java:S19895"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(•ú„Îùÿÿÿÿ8À½‡¨Î.
+
+java:S1989"lHandle the following exception that could be thrown by "setCharacterEncoding": UnsupportedEncodingException.(áò‰øÿÿÿÿ8¬™ÑÉÑ.
+o
+java:S19892"SHandle the following exception that could be thrown by "sendRedirect": IOException.(Ìğ§m8àÇÂ·Ò.

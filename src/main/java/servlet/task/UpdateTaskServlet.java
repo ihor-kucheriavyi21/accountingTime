@@ -24,25 +24,27 @@ public class UpdateTaskServlet extends HttpServlet {
         String nameTask = req.getParameter("name");
         String amountOfTime = req.getParameter("time");
 
-        User user = (User) req.getSession().getAttribute("user");
-
-        Task task = user.tasks.get(id);
-        task.setTaskName(nameTask);
-        task.setAmountOfTime(Integer.parseInt(amountOfTime));
+        Task task = taskService.getTaskById(id);
+        LOGGER.info("Update task" + task);
+        if (nameTask.length() > 2) {
+            task.setTaskName(nameTask);
+        }
+        if (amountOfTime.length() > 0) {
+            task.setAmountOfTime(Integer.parseInt(amountOfTime));
+        }
         task.setRecordingTime(new Time(System.currentTimeMillis()));
-        taskDao.update(task);
+        LOGGER.info("Task after update" + task);
+        taskService.updateTask(task);
         resp.sendRedirect(req.getContextPath() + "/main");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        System.out.println("####DOGET FOR UPDATE TASK");
         int idTask = Integer.parseInt(req.getParameter("id"));
-        User user = (User) req.getSession().getAttribute("user");
 
-        Task task = user.tasks.get(idTask);
+        Task task = taskService.getTaskById(idTask);
         req.setAttribute("task", task);
-        req.getRequestDispatcher(index).forward(req, resp);
+        req.getRequestDispatcher(UPDATE_JSP).forward(req, resp);
     }
 }

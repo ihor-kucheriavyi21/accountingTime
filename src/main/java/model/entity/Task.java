@@ -111,4 +111,16 @@ public class Task {
         this.category = category;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "idTask=" + idTask +
+                ", taskName='" + taskName + '\'' +
+                ", recordingTime=" + recordingTime +
+                ", amountOfTime=" + amountOfTime +
+                ", category=" + category +
+                ", idUser=" + idUser +
+                ", idStatus=" + idStatus +
+                '}';
+    }
 }

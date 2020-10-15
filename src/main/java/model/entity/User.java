@@ -1,14 +1,10 @@
 package model.entity;
 
+import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
-public class User {
-    /*public static void main(String[] args) {
-        SQLDatabaseManager dbManager;
-        dbManager = SQLDatabaseManager.getInstance();
-        dbManager.insertTask(new Task("someTask", new Time(System.currentTimeMillis()), 9));
-    }*/
+public class User implements Serializable {
+
 
     public List<Task> tasks;
     private int id;
@@ -16,7 +12,6 @@ public class User {
     private String name;
     private String pass;
     private int idRole;
-
 
 
     public User(int id, String name, String pass, int idRole) {
@@ -76,6 +71,15 @@ public class User {
     public void setIdRole(int idRole) {
         this.idRole = idRole;
     }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     @Override
     public String toString() {
         return "User{" +
