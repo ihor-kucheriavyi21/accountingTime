@@ -1,9 +1,7 @@
 package servlet;
 
-import db.DAO;
-import db.TaskDaoImpl;
-import model.entity.Task;
-import model.entity.User;
+import factory.ServiceFactory;
+import model.service.TaskService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -13,8 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class AllTasksForAdminServlet extends HttpServlet {
-    private final static String allTask = "/WEB-INF/view/tasks.jsp";
-//todo addFilet to check if Admin try connect to page with allTasks
+    private static final  String ALL_TASK = "/WEB-INF/view/tasks.jsp";
+    //todo addFilet to check if Admin try connect to page with allTasks
+    //todo create enum to print nameSorting
+    private final TaskService taskService = ServiceFactory.getTaskService();
+    private Cookie cookie = new Cookie("sortNum", "0");
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

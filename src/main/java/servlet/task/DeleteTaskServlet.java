@@ -1,5 +1,6 @@
 package servlet.task;
 
+import factory.ServiceFactory;
 import model.entity.Task;
 import model.service.TaskService;
 
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class DeleteTaskServlet extends HttpServlet {
-    TaskService taskService = new TaskService();
+    private static final TaskService taskService = ServiceFactory.getTaskService();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

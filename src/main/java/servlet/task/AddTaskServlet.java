@@ -1,5 +1,7 @@
 package servlet.task;
 
+import factory.ServiceFactory;
+import model.entity.Category;
 import model.entity.Task;
 import model.entity.User;
 import model.service.CategoryService;

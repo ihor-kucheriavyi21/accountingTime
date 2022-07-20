@@ -1,8 +1,9 @@
 package servlet.task;
 
-import db.TaskDaoImpl;
+import factory.ServiceFactory;
 import model.entity.Task;
-import model.entity.User;
+import model.service.TaskService;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,10 +13,13 @@ import java.io.IOException;
 import java.sql.Time;
 
 public class UpdateTaskServlet extends HttpServlet {
-    private final static String index = "/WEB-INF/view/update.jsp";
-    TaskDaoImpl taskDao = new TaskDaoImpl();
+    private static final String UPDATE_JSP = "/WEB-INF/view/update.jsp";
+    private static final TaskService taskService = ServiceFactory.getTaskService();
+    private static final Logger LOGGER = Logger.getLogger(UpdateTaskServlet.class);
 
-
+    //todo if not all fields fill throw some error page or error message
+    //todo check if task change status you cannot update
+    //todo add change category
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {

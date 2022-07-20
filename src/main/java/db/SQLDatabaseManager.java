@@ -15,8 +15,7 @@ import java.util.Properties;
 public class SQLDatabaseManager {
     private static final Logger LOGGER = Logger.getLogger(SQLDatabaseManager.class.getName());
     private static SQLDatabaseManager sqlDatabaseManager;
-    private static ComboPooledDataSource cpds = new ComboPooledDataSource();
-    //String url = "jdbc:mysql://localhost:3306/testBDForProject?serverTimezone=Europe/Kiev&useSSL=false&user=root&password=1234";
+    private ComboPooledDataSource dataSource;
 
     private SQLDatabaseManager() {
         dataSource = new ComboPooledDataSource();
