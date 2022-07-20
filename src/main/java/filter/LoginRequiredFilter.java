@@ -21,7 +21,7 @@ public class LoginRequiredFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         LOGGER.info(request.getRequestURI());
         if (request.getSession().getAttribute("user") != null
-                || request.getRequestURI().equals("/registration")) {
+                || request.getRequestURI().equals("registration")) {
             filterChain.doFilter(request, servletResponse);
         } else {
             RequestDispatcher rd = servletRequest.getRequestDispatcher("login");

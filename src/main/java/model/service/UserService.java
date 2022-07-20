@@ -9,7 +9,7 @@ public class UserService {
     public UserService(UserDao userDao) {
         this.userDao = userDao;
     }
-
+    public UserService(){}
     public int getUserId(User user) {
         return userDao.getCurrentUser(user).getId();
     }

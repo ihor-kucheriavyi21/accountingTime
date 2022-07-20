@@ -15,6 +15,5 @@ public class CategoryServiceTest {
         when(categoryService.requestForAddCategoryIsValid("en", "nameRu")).thenReturn(false);
         Assert.assertEquals(categoryService.requestForAddCategoryIsValid("en", "nameRu"),false);
 
-
     }
 }

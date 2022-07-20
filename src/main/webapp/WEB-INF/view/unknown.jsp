@@ -16,7 +16,6 @@
 
     <p>
         <fmt:message key="unknown_jsp.information"/>
-
     </p>
     <br/>
 </div>
